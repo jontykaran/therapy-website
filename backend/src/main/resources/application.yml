@@ -27,30 +27,22 @@ spring:
       enabled: ${H2_CONSOLE:false}
       path: /h2-console
 
-  # Email (SMTP) - Supports Resend (port 465/SSL) or Outlook (port 587/TLS)
+  # Email (SMTP) - Resend.com via port 465 SSL
   mail:
     host: ${SMTP_HOST:smtp.resend.com}
     port: ${SMTP_PORT:465}
-    username: ${SMTP_USER:}
+    username: ${SMTP_USER:resend}
     password: ${SMTP_PASSWORD:}
-    protocol: ${MAIL_PROTOCOL:smtps}
+    protocol: smtps
     properties:
       mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: ${SMTP_STARTTLS:false}
-          ssl:
-            enable: ${SMTP_SSL:true}
-            trust: ${SMTP_HOST:smtp.resend.com}
-          connectiontimeout: 10000
-          timeout: 10000
-          writetimeout: 10000
         smtps:
           auth: true
           ssl:
             enable: true
-            trust: ${SMTP_HOST:smtp.resend.com}
+          connectiontimeout: 10000
+          timeout: 10000
+          writetimeout: 10000
 
 # App-specific config
 app:
