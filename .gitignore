@@ -4,16 +4,6 @@ frontend/dist/
 frontend/.env.local
 frontend/.env.*.local
 
-# Backend
-backend/target/
-backend/.env
-backend/.classpath
-backend/.project
-backend/.settings/
-backend/.idea/
-backend/*.iml
-backend/out/
-
 # IDE
 .vscode/
 .idea/
@@ -28,3 +18,10 @@ npm-debug.log*
 
 # Dependencies
 node_modules/
+
+# Netlify
+.netlify/
+
+# Environment
+.env
+.env.local
