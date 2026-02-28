@@ -27,27 +27,15 @@ spring:
       enabled: ${H2_CONSOLE:false}
       path: /h2-console
 
-  # Email (SMTP) - Resend.com via port 465 SSL
-  mail:
-    host: ${SMTP_HOST:smtp.resend.com}
-    port: ${SMTP_PORT:465}
-    username: ${SMTP_USER:resend}
-    password: ${SMTP_PASSWORD:}
-    protocol: smtps
-    properties:
-      mail:
-        smtps:
-          auth: true
-          ssl:
-            enable: true
-          connectiontimeout: 10000
-          timeout: 10000
-          writetimeout: 10000
+  # Disable auto-config for mail (we use Resend HTTP API instead of SMTP)
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mail.MailAutoConfiguration
 
 # App-specific config
 app:
-  notification-email: ${NOTIFICATION_EMAIL:Rashisharmapsychotherapy@outlook.com}
+  notification-email: ${NOTIFICATION_EMAIL:rashisharmapsychotherapy@outlook.com}
   from-email: ${FROM_EMAIL:onboarding@resend.dev}
+  resend-api-key: ${RESEND_API_KEY:}
   cors:
     allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
 
@@ -60,3 +48,6 @@ management:
   endpoint:
     health:
       show-details: when-authorized
+  health:
+    mail:
+      enabled: false
