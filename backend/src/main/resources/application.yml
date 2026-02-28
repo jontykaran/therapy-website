@@ -5,11 +5,12 @@ spring:
   application:
     name: therapy-backend
 
-  # Database - Local dev defaults to H2, Railway auto-configured via TherapyApplication.main()
+  # Database - Local dev defaults to H2
+  # Production: TherapyApplication.main() reads DATABASE_URL and sets spring.datasource.url
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:therapydb}
-    username: ${SPRING_DATASOURCE_USERNAME:sa}
-    password: ${SPRING_DATASOURCE_PASSWORD:}
+    url: jdbc:h2:mem:therapydb
+    username: sa
+    password:
 
   jpa:
     hibernate:
