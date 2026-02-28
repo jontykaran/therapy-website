@@ -1,0 +1,56 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: therapy-backend
+
+  # Database - defaults to H2 for local dev, override with env vars for PostgreSQL
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:therapydb}
+    username: ${DATABASE_USER:sa}
+    password: ${DATABASE_PASSWORD:}
+    driver-class-name: ${DATABASE_DRIVER:org.h2.Driver}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  # H2 console for local dev
+  h2:
+    console:
+      enabled: ${H2_CONSOLE:true}
+      path: /h2-console
+
+  # Email (SMTP)
+  mail:
+    host: ${SMTP_HOST:smtp.gmail.com}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USER:}
+    password: ${SMTP_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# App-specific config
+app:
+  notification-email: ${NOTIFICATION_EMAIL:hello@therapybyrashi.com}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
