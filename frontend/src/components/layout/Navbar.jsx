@@ -30,9 +30,17 @@ export default function Navbar() {
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-3">
-            <img src="/logo.svg" alt="Therapy By Rashi" className="h-12 md:h-14 w-auto" />
-            <span className={`font-serif text-xs md:text-sm font-semibold transition-colors hidden sm:inline max-w-[120px] leading-tight ${
+          <Link to="/" className="flex items-center gap-2">
+            <div className={`rounded-full p-0.5 transition-all duration-300 ${
+              scrolled ? 'bg-white shadow-sm' : 'bg-white/90'
+            }`}>
+              <img
+                src="/logo-kr.jpg"
+                alt="Therapy By Rashi"
+                className="h-10 md:h-12 w-10 md:w-12 rounded-full object-cover"
+              />
+            </div>
+            <span className={`font-serif text-sm md:text-base font-semibold transition-colors hidden sm:inline ${
               scrolled ? 'text-sage-800' : 'text-white'
             }`}>
               Therapy By Rashi

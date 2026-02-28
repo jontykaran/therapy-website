@@ -7,7 +7,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <img src="/logo-horizontal.svg" alt="Therapy By Rashi" className="h-16 w-auto mb-4 opacity-90" />
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src="/logo-kr.jpg"
+                alt="Therapy By Rashi"
+                className="h-14 w-14 rounded-full object-cover ring-2 ring-sage-600"
+              />
+              <h3 className="font-serif text-lg font-semibold text-white">Therapy By Rashi</h3>
+            </div>
             <p className="text-sage-300 text-sm leading-relaxed">
               Professional counselling and psychotherapy by Rashi Sharma.
               A safe, confidential space for healing and personal growth.
