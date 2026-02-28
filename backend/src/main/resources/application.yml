@@ -5,13 +5,11 @@ spring:
   application:
     name: therapy-backend
 
-  # Database - auto-detects driver from URL
-  # Local dev: defaults to H2
-  # Production: set SPRING_DATASOURCE_URL=jdbc:postgresql://host:port/db
+  # Database - Local dev defaults to H2, Railway auto-configured via TherapyApplication.main()
   datasource:
-    url: ${SPRING_DATASOURCE_URL:${DATABASE_URL:jdbc:h2:mem:therapydb}}
-    username: ${SPRING_DATASOURCE_USERNAME:${DATABASE_USER:sa}}
-    password: ${SPRING_DATASOURCE_PASSWORD:${DATABASE_PASSWORD:}}
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:therapydb}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
 
   jpa:
     hibernate:
