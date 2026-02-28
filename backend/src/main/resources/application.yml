@@ -27,7 +27,7 @@ spring:
       enabled: ${H2_CONSOLE:false}
       path: /h2-console
 
-  # Email (SMTP)
+  # Email (SMTP) - Outlook configuration
   mail:
     host: ${SMTP_HOST:smtp-mail.outlook.com}
     port: ${SMTP_PORT:587}
@@ -39,6 +39,12 @@ spring:
           auth: true
           starttls:
             enable: true
+            required: true
+          ssl:
+            trust: smtp-mail.outlook.com
+          connectiontimeout: 10000
+          timeout: 10000
+          writetimeout: 10000
 
 # App-specific config
 app:
