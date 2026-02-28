@@ -5,12 +5,13 @@ spring:
   application:
     name: therapy-backend
 
-  # Database - defaults to H2 for local dev, override with env vars for PostgreSQL
+  # Database - auto-detects driver from URL
+  # Local dev: defaults to H2
+  # Production: set SPRING_DATASOURCE_URL=jdbc:postgresql://host:port/db
   datasource:
-    url: ${DATABASE_URL:jdbc:h2:mem:therapydb}
-    username: ${DATABASE_USER:sa}
-    password: ${DATABASE_PASSWORD:}
-    driver-class-name: ${DATABASE_DRIVER:org.h2.Driver}
+    url: ${SPRING_DATASOURCE_URL:${DATABASE_URL:jdbc:h2:mem:therapydb}}
+    username: ${SPRING_DATASOURCE_USERNAME:${DATABASE_USER:sa}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${DATABASE_PASSWORD:}}
 
   jpa:
     hibernate:
@@ -19,16 +20,17 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    database-platform: ${JPA_PLATFORM:}
 
-  # H2 console for local dev
+  # H2 console for local dev only
   h2:
     console:
-      enabled: ${H2_CONSOLE:true}
+      enabled: ${H2_CONSOLE:false}
       path: /h2-console
 
   # Email (SMTP)
   mail:
-    host: ${SMTP_HOST:smtp.gmail.com}
+    host: ${SMTP_HOST:smtp-mail.outlook.com}
     port: ${SMTP_PORT:587}
     username: ${SMTP_USER:}
     password: ${SMTP_PASSWORD:}
@@ -41,7 +43,7 @@ spring:
 
 # App-specific config
 app:
-  notification-email: ${NOTIFICATION_EMAIL:hello@therapybyrashi.com}
+  notification-email: ${NOTIFICATION_EMAIL:Rashisharmapsychotherapy@outlook.com}
   cors:
     allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
 
