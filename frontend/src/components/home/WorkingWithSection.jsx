@@ -34,12 +34,6 @@ export default function WorkingWithSection() {
             </AnimatedSection>
           ))}
         </div>
-
-        <AnimatedSection delay={0.3}>
-          <p className="font-serif text-2xl md:text-3xl text-sage-800 font-semibold">
-            Welcome &mdash; I&apos;m glad you&apos;re here.
-          </p>
-        </AnimatedSection>
       </div>
     </section>
   )
