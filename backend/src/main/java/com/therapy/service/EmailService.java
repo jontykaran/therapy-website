@@ -18,7 +18,7 @@ public class EmailService {
     @Value("${app.notification-email}")
     private String notificationEmail;
 
-    @Value("${spring.mail.username:}")
+    @Value("${app.from-email:${spring.mail.username:}}")
     private String fromEmail;
 
     @Value("${spring.mail.host:}")

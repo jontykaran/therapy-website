@@ -27,28 +27,35 @@ spring:
       enabled: ${H2_CONSOLE:false}
       path: /h2-console
 
-  # Email (SMTP) - Outlook configuration
+  # Email (SMTP) - Supports Resend (port 465/SSL) or Outlook (port 587/TLS)
   mail:
-    host: ${SMTP_HOST:smtp-mail.outlook.com}
-    port: ${SMTP_PORT:587}
+    host: ${SMTP_HOST:smtp.resend.com}
+    port: ${SMTP_PORT:465}
     username: ${SMTP_USER:}
     password: ${SMTP_PASSWORD:}
+    protocol: ${MAIL_PROTOCOL:smtps}
     properties:
       mail:
         smtp:
           auth: true
           starttls:
-            enable: true
-            required: true
+            enable: ${SMTP_STARTTLS:false}
           ssl:
-            trust: smtp-mail.outlook.com
+            enable: ${SMTP_SSL:true}
+            trust: ${SMTP_HOST:smtp.resend.com}
           connectiontimeout: 10000
           timeout: 10000
           writetimeout: 10000
+        smtps:
+          auth: true
+          ssl:
+            enable: true
+            trust: ${SMTP_HOST:smtp.resend.com}
 
 # App-specific config
 app:
   notification-email: ${NOTIFICATION_EMAIL:Rashisharmapsychotherapy@outlook.com}
+  from-email: ${FROM_EMAIL:onboarding@resend.dev}
   cors:
     allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
 
