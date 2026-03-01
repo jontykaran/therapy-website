@@ -46,7 +46,7 @@ export default function ContactInfo() {
               <div>
                 <p className="text-sage-500 text-sm">{detail.label}</p>
                 {detail.href ? (
-                  <a href={detail.href} className="text-sage-800 font-medium hover:text-warm-600 transition-colors">
+                  <a href={detail.href} className="text-sage-800 font-medium hover:text-blush-500 transition-colors">
                     {detail.value}
                   </a>
                 ) : (

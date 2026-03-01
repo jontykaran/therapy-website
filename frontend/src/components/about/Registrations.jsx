@@ -5,7 +5,7 @@ export default function Registrations() {
     <section className="py-20 md:py-28 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <AnimatedSection>
-          <p className="text-warm-500 font-medium text-sm tracking-widest uppercase mb-3">Professional Standards</p>
+          <p className="text-blush-400 font-medium text-sm tracking-widest uppercase mb-3">Professional Standards</p>
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-sage-800 mb-10">
             Professional Registration
           </h2>

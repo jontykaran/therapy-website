@@ -8,7 +8,7 @@ export default function CTASection() {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-sage-700 via-sage-800 to-sage-900" />
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-warm-400 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blush-400 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-ocean-400 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
 

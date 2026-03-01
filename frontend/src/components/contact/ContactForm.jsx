@@ -46,7 +46,7 @@ export default function ContactForm() {
         </p>
         <button
           onClick={() => setSubmitted(false)}
-          className="mt-4 text-warm-600 hover:text-warm-700 font-medium text-sm"
+          className="mt-4 text-blush-500 hover:text-blush-600 font-medium text-sm"
         >
           Send another message
         </button>
@@ -123,7 +123,7 @@ export default function ContactForm() {
         disabled={isSubmitting}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className="w-full py-3.5 bg-sage-600 hover:bg-sage-700 text-white rounded-full font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full py-3.5 bg-blush-500 hover:bg-blush-600 text-white rounded-full font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Sending...' : 'Send Message'}
       </motion.button>

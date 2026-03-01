@@ -1,28 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --color-sage-50: #f6f7f4;
-  --color-sage-100: #e8ebe3;
-  --color-sage-200: #d1d7c7;
-  --color-sage-300: #b3bea3;
-  --color-sage-400: #95a67f;
-  --color-sage-500: #7a8e65;
-  --color-sage-600: #5f7150;
-  --color-sage-700: #4b5a40;
-  --color-sage-800: #3d4935;
-  --color-sage-900: #343e2e;
+  /* Sage — dusty blue-sage (matches watercolor wash in logo) */
+  --color-sage-50: #f5f6f6;
+  --color-sage-100: #e3e8e7;
+  --color-sage-200: #cad4d2;
+  --color-sage-300: #a9b8b5;
+  --color-sage-400: #8a9f9b;
+  --color-sage-500: #708683;
+  --color-sage-600: #5b6e6b;
+  --color-sage-700: #4b5b59;
+  --color-sage-800: #3f4c4a;
+  --color-sage-900: #363f3e;
 
-  --color-warm-50: #fdf8f0;
-  --color-warm-100: #f9eeda;
-  --color-warm-200: #f2dab4;
-  --color-warm-300: #e9c084;
-  --color-warm-400: #dfa253;
-  --color-warm-500: #d78a33;
-  --color-warm-600: #c87228;
-  --color-warm-700: #a65823;
-  --color-warm-800: #854722;
-  --color-warm-900: #6c3b1e;
+  /* Warm — gold/bronze (matches KR monogram in logo) */
+  --color-warm-50: #fdf8f1;
+  --color-warm-100: #f9edd8;
+  --color-warm-200: #f1d7ae;
+  --color-warm-300: #e5bb7c;
+  --color-warm-400: #d4a05a;
+  --color-warm-500: #c48a42;
+  --color-warm-600: #b07538;
+  --color-warm-700: #925d2f;
+  --color-warm-800: #784c2b;
+  --color-warm-900: #633f25;
 
+  /* Blush — lotus petal pink tones (from logo) */
+  --color-blush-50: #fdf5f2;
+  --color-blush-100: #fae8e1;
+  --color-blush-200: #f4cfc3;
+  --color-blush-300: #e8b09d;
+  --color-blush-400: #d99080;
+  --color-blush-500: #c47462;
+  --color-blush-600: #ab5c4b;
+  --color-blush-700: #8f4c3e;
+  --color-blush-800: #764137;
+  --color-blush-900: #643931;
+
+  /* Ocean — kept for contrast/depth */
   --color-ocean-50: #f0f7f7;
   --color-ocean-100: #d9ecec;
   --color-ocean-200: #b7d9db;

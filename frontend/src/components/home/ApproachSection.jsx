@@ -23,7 +23,7 @@ export default function ApproachSection() {
               developed by Carl Rogers &mdash; a way of being that honours who you are, right now.
             </p>
 
-            <div className="border-l-4 border-warm-300 pl-6 py-2">
+            <div className="border-l-4 border-blush-300 pl-6 py-2">
               <div className="space-y-4">
                 <motion.p
                   initial={{ opacity: 0, x: -10 }}

@@ -9,7 +9,7 @@ export default function SectionHeading({ title, subtitle, light = false }) {
           {subtitle}
         </p>
       )}
-      <div className={`mt-4 w-16 h-0.5 mx-auto ${light ? 'bg-warm-300' : 'bg-warm-400'}`} />
+      <div className={`mt-4 w-16 h-0.5 mx-auto ${light ? 'bg-blush-300' : 'bg-blush-400'}`} />
     </div>
   )
 }

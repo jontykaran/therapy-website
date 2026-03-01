@@ -41,6 +41,17 @@ export default function HeroSection() {
         ))}
       </div>
 
+      {/* Logo watermark — subtle behind text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]">
+        <img
+          src="/logo-kr.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-96 md:w-[30rem] lg:w-[36rem] opacity-20 rounded-full select-none"
+          style={{ filter: 'brightness(1.6) grayscale(0.2)' }}
+        />
+      </div>
+
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.div
@@ -48,7 +59,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <p className="text-warm-200 text-sm md:text-base tracking-widest uppercase mb-4">
+          <p className="text-blush-200 text-sm md:text-base tracking-widest uppercase mb-4">
             Person-Centred Psychotherapy
           </p>
         </motion.div>
@@ -60,7 +71,7 @@ export default function HeroSection() {
           className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight mb-6"
         >
           You already hold the{' '}
-          <span className="italic text-warm-200">answers</span>.{' '}
+          <span className="italic text-blush-200">answers</span>.{' '}
           Sometimes, you just need the right space to find them.
         </motion.h1>
 
