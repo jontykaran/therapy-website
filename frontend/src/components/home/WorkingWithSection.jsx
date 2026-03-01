@@ -17,12 +17,12 @@ export default function WorkingWithSection() {
           </p>
         </AnimatedSection>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mb-14">
+        <div className="flex flex-col items-center justify-center gap-5 mb-14">
           {shifts.map((shift, idx) => (
             <AnimatedSection key={shift.from} delay={idx * 0.15}>
               <motion.div
                 whileHover={{ scale: 1.04 }}
-                className="flex items-center gap-3 bg-sage-50 rounded-xl px-6 py-4 border border-sage-100"
+                className="flex items-center justify-center gap-3 bg-sage-50 rounded-xl px-8 py-4 border border-sage-100 w-72"
               >
                 <span className="text-sage-400 font-medium">From</span>
                 <span className="text-sage-800 font-semibold text-lg">{shift.from}</span>
