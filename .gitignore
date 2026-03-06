@@ -19,8 +19,8 @@ npm-debug.log*
 # Dependencies
 node_modules/
 
-# Netlify
-.netlify/
+# Vercel
+.vercel/
 
 # Environment
 .env

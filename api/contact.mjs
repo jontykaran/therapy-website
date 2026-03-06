@@ -1,5 +1,5 @@
-// Netlify Serverless Function — Contact Form Handler
-// Replaces the entire Spring Boot backend for form submission + email via Resend HTTP API
+// Vercel Serverless Function — Contact Form Handler
+// Sends email via Resend HTTP API
 
 const RESEND_API_URL = "https://api.resend.com/emails";
 
@@ -8,53 +8,49 @@ const rateLimitMap = new Map();
 const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
 const RATE_LIMIT_MAX = 5; // 5 requests per minute per IP
 
-export default async (req, context) => {
+export default async function handler(req, res) {
   // Only allow POST
   if (req.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), {
-      status: 405,
-      headers: { "Content-Type": "application/json" },
-    });
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   // Rate limiting by IP
-  const clientIp = context.ip || req.headers.get("x-forwarded-for") || "unknown";
+  const clientIp =
+    req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+    req.headers["x-real-ip"] ||
+    "unknown";
+
   if (isRateLimited(clientIp)) {
-    return new Response(
-      JSON.stringify({ error: "Too many requests. Please try again in a minute." }),
-      { status: 429, headers: { "Content-Type": "application/json" } }
-    );
+    return res
+      .status(429)
+      .json({ error: "Too many requests. Please try again in a minute." });
   }
 
   try {
-    const body = await req.json();
-    const { name, email, phone, message } = body;
+    const { name, email, phone, message } = req.body;
 
     // Validation
     const errors = [];
     if (!name || !name.trim()) errors.push("Name is required");
     if (!email || !email.trim()) errors.push("Email is required");
-    else if (!/^\S+@\S+\.\S+$/.test(email)) errors.push("Invalid email address");
+    else if (!/^\S+@\S+\.\S+$/.test(email))
+      errors.push("Invalid email address");
     if (!message || !message.trim()) errors.push("Message is required");
 
     if (errors.length > 0) {
-      return new Response(JSON.stringify({ error: errors.join(", ") }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
+      return res.status(400).json({ error: errors.join(", ") });
     }
 
     // Send email via Resend
     const resendApiKey = process.env.RESEND_API_KEY;
     const fromEmail = process.env.FROM_EMAIL || "onboarding@resend.dev";
-    const notificationEmail = process.env.NOTIFICATION_EMAIL || "rashisharmapsychotherapy@outlook.com";
+    const notificationEmail =
+      process.env.NOTIFICATION_EMAIL ||
+      "rashisharmapsychotherapy@outlook.com";
 
     if (!resendApiKey) {
       console.error("RESEND_API_KEY not configured");
-      return new Response(
-        JSON.stringify({ error: "Email service not configured" }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      );
+      return res.status(500).json({ error: "Email service not configured" });
     }
 
     const htmlBody = buildHtmlEmail(name, email, phone, message);
@@ -80,32 +76,23 @@ export default async (req, context) => {
 
     if (!resendResponse.ok) {
       console.error("Resend API error:", resendData);
-      return new Response(
-        JSON.stringify({ error: "Failed to send message. Please try again." }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      );
+      return res
+        .status(500)
+        .json({ error: "Failed to send message. Please try again." });
     }
 
     console.log("Email sent successfully:", resendData.id);
 
-    return new Response(
-      JSON.stringify({ message: "Thank you for your message. We will be in touch soon." }),
-      { status: 201, headers: { "Content-Type": "application/json" } }
-    );
+    return res
+      .status(201)
+      .json({ message: "Thank you for your message. We will be in touch soon." });
   } catch (err) {
     console.error("Contact function error:", err);
-    return new Response(
-      JSON.stringify({ error: "Something went wrong. Please try again." }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    return res
+      .status(500)
+      .json({ error: "Something went wrong. Please try again." });
   }
-};
-
-// Netlify function config
-export const config = {
-  path: "/api/contact",
-  method: "POST",
-};
+}
 
 // ─── Rate Limiting ───────────────────────────────────────────────
 
