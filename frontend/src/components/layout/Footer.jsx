@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/logo-kr.jpg"
+                src={`${import.meta.env.BASE_URL}logo-kr.jpg`}
                 alt="Therapy By Rashi"
                 className="h-14 w-14 rounded-full object-cover ring-2 ring-sage-600"
               />

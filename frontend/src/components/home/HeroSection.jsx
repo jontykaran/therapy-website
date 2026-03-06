@@ -8,7 +8,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: 'url(/images/hero-nature.jpg)',
+          backgroundImage: `url(${import.meta.env.BASE_URL}images/hero-nature.jpg)`,
         }}
       />
 
@@ -44,7 +44,7 @@ export default function HeroSection() {
       {/* Logo watermark — subtle behind text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]">
         <img
-          src="/logo-kr.jpg"
+          src={`${import.meta.env.BASE_URL}logo-kr.jpg`}
           alt=""
           aria-hidden="true"
           className="w-96 md:w-[30rem] lg:w-[36rem] opacity-20 rounded-full select-none"

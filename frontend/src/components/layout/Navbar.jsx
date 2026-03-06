@@ -35,7 +35,7 @@ export default function Navbar() {
               scrolled ? 'bg-white shadow-sm' : 'bg-white/90'
             }`}>
               <img
-                src="/logo-kr.jpg"
+                src={`${import.meta.env.BASE_URL}logo-kr.jpg`}
                 alt="Therapy By Rashi"
                 className="h-10 md:h-12 w-10 md:w-12 rounded-full object-cover"
               />
