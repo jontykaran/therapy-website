@@ -34,6 +34,8 @@ jobs:
       - name: Build
         working-directory: frontend
         run: npm run build
+        env:
+          GITHUB_PAGES: true
 
       - name: SPA fallback (copy index.html to 404.html)
         run: cp frontend/dist/index.html frontend/dist/404.html
